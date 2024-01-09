@@ -1,9 +1,12 @@
 from fastapi import FastAPI,Depends,HTTPException
 from .database import sessionLocal,engine,get_db,table1,table2,table3
 from sqlalchemy.orm import Session
+import json
 
 app = FastAPI()
 
+with open(r"database.json",'r') as database:
+    database_cred = json.load(database)
 
 
 @app.get("/")

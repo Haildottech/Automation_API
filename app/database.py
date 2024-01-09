@@ -2,10 +2,12 @@ from sqlalchemy import create_engine,MetaData,Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker,Session
 from sqlalchemy.ext.automap import automap_base
+import json
 
-SQL_ALCHEMY_URL = "cockroachdb://saim:R2_RkmUt3xc59Gjzuhn33A@joking-egret-7111.8nk.cockroachlabs.cloud:26257/defaultdb?sslmode=require"
+with open(r"database.json",'r') as database:
+    database_cred = json.load(database)
 
-engine = create_engine(SQL_ALCHEMY_URL)
+engine = create_engine(database_cred['database_url'])
 sessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
 metadata = MetaData()
 
