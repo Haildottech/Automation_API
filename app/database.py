@@ -14,8 +14,10 @@ baseclass = declarative_base()
 # Reflect each table separately
 table1 = Table('DMC_failed_records', metadata, autoload_with=engine)
 table2 = Table('DMC_success_records', metadata, autoload_with=engine)
-
+table3 = Table('nxs_success_records', metadata, autoload_with=engine)
 print(table1.columns)
+print(table3.columns)
+
 # ... (do this for each table you need)
 
 
